@@ -1,22 +1,28 @@
-@import url("https://fonts.googleapis.com/css2?family=Square+Peg&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400..700&family=Marck+Script&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
 section {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 200vh;
   width: 100vw;
-  background-color: #EEC8A4;
+  background-color: #26FFA4;
 }
 
 h1 {
   position: fixed;
-  font-family: "Square Peg", cursive;
-  font-size: 10vw;
+  font-family: "Caveat";
+  font-size: 6vw;
   top: 50%;
   left: 50%;
   letter-spacing: 1.25px;
   transform: translate(-50%, -50%);
-  color: #102C6F;
+  color: #FF471E;
   z-index: 2;
 }
 
