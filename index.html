@@ -8,6 +8,11 @@
 </head>
 <body>
 
+1
+<canvas id="c"></canvas>
+2
+
+<div>
 <section>
   <h1>С карт и куоу</h1>
   <svg width="270" height="580" viewBox="0 0 270 580" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -197,11 +202,18 @@
 			c5.6,2.1,10,5.8,13.9,10.2c4.4,5,7.8,10.7,10.4,16.9c0.2,0.4,0.4,0.8,0.7,1.3C497.6,306.8,497.6,306.9,497.6,307z" />
     </g>
   </svg>
+</div>
 
    <!-- <script src="https://unpkg.co/gsap@3/dist/gsap.min.js"></script> -->
    <!-- <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script> -->
    <!-- <script src="https://assets.codepen.io/16327/DrawSVGPlugin3.min.js"></script> -->
-   <!-- <script src="main.js"></script> -->
+  <script type="importmap">
+    { "imports":
+      {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.170.0/examples/jsm/" }
+    } </script>
+  <script type="module" src="/main.js"></script>
 </body>
 
 </html>

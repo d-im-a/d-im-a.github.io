@@ -15,7 +15,6 @@ section {
 }
 
 h1 {
-  position: fixed;
   font-family: "Caveat";
   font-size: 6vw;
   top: 50%;
@@ -26,14 +25,12 @@ h1 {
   z-index: 2;
 }
 
-svg {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  height: 80vh;
-  z-index: 1;
-}
 svg path {
   stroke: #F6854E;
+}
+
+#c {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
