@@ -1,6 +1,7 @@
 import * as THREE from "three";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 const canvas = document.querySelector("#c");
+const postCard = document.querySelector(".post-card");
 
 const scene = new THREE.Scene();
 // scene.background = new THREE.Color().setHex(0x303030);
@@ -14,8 +15,9 @@ renderer.setClearColor(0x000000, 0); // the default
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.setAnimationLoop(animate);
 
-var floorMaterial = new THREE.MeshBasicMaterial();
-var textureLoader = new THREE.TextureLoader();
+const floorMaterial = new THREE.MeshBasicMaterial();
+const textureLoader = new THREE.TextureLoader();
+let floor;
 textureLoader.load("./assets/texture.jpg", function (texture) {
   const floorLength = 300;
   texture.wrapS = THREE.RepeatWrapping;
@@ -25,7 +27,7 @@ textureLoader.load("./assets/texture.jpg", function (texture) {
   floorMaterial.needsUpdate = true;
 
   const planeGeometry = new THREE.PlaneGeometry(floorLength, floorLength);
-  const floor = new THREE.Mesh(planeGeometry, floorMaterial);
+  floor = new THREE.Mesh(planeGeometry, floorMaterial);
   floor.rotation.set(-Math.PI / 2, 0, 0);
 
   scene.add(floor);
@@ -95,12 +97,35 @@ gltfLoader.load(
 
 let startGrabRotation = 0;
 let accumRotation = 0;
-function animate() {
-  // if (ballerina) {
-  // ballerina.rotation.z += 0.015;
-  // }
+let endSceneTrigger = false;
+let endSceneStartTime;
+let showPostCard = false;
+function animate(time) {
   if (!ballerina) {
     return;
+  }
+  
+  if (endSceneTrigger) {
+    if (!endSceneStartTime) {
+	    endSceneStartTime = time;
+    }
+	  console.log(time, endSceneStartTime)
+	  if (time <= endSceneStartTime + 3000) {
+	    ballerina.position.y -= 0.5;
+	    floor.position.y -= 0.5;
+	    ballerina.position.z -= 0.5;
+	    floor.position.z -= 0.5;
+	    camera.position.z += 0.5;
+	  }
+	  else {
+	    console.log('h')
+	    postCard.classList.toggle('show')
+	    renderer.setAnimationLoop(null)
+	    canvas.remove();
+	  }
+  }
+  
+  if (showPostCard) {
   }
 
   if (startOfGrabX) {
@@ -127,18 +152,23 @@ canvas.addEventListener("mousedown", (e) => {
   canvas.style.cursor = "grabbing";
   isGrabbing = true;
 });
+
 canvas.addEventListener("mousemove", (e) => {
   currentGrabX = e.clientX;
 });
 
 function onRelease() {
+  if (!ballerina) { 
+	  return;
+  }
   canvas.style.cursor = "grab";
   isGrabbing = false;
   startOfGrabX = undefined;
-  if (ballerina) {
-    startGrabRotation = ballerina.rotation.z % (2 * Math.PI);
-    accumRotation += startGrabRotation;
-    console.log("a", (360 * accumRotation) / (2 * Math.PI));
+  accumRotation += ballerina.rotation.z - startGrabRotation;
+  startGrabRotation = ballerina.rotation.z % (2 * Math.PI); // normalize to range [0, 2 * PI]
+  console.log(accumRotation, accumRotation >= 3 * Math.PI)
+  if (accumRotation >= 3 * Math.PI) {
+     endSceneTrigger = true
   }
 }
 
