@@ -97,34 +97,28 @@ gltfLoader.load(
 
 let startGrabRotation = 0;
 let accumRotation = 0;
-let endSceneTrigger = false;
+let endScene = false;
 let endSceneStartTime;
 let showPostCard = false;
 function animate(time) {
   if (!ballerina) {
     return;
   }
-  
-  if (endSceneTrigger) {
+
+  if (endScene) {
     if (!endSceneStartTime) {
-	    endSceneStartTime = time;
+      endSceneStartTime = time;
     }
-	  console.log(time, endSceneStartTime)
-	  if (time <= endSceneStartTime + 3000) {
-	    ballerina.position.y -= 0.5;
-	    floor.position.y -= 0.5;
-	    ballerina.position.z -= 0.5;
-	    floor.position.z -= 0.5;
-	    camera.position.z += 0.5;
-	  }
-	  else {
-	    console.log('h')
-	    postCard.classList.toggle('show')
-	    renderer.setAnimationLoop(null)
-	    canvas.remove();
-	  }
+    if (time <= endSceneStartTime + 3000) {
+      camera.rotation.x += 0.005;
+      camera.position.y += 0.0005;
+    } else {
+      postCard.classList.toggle("show");
+      renderer.setAnimationLoop(null);
+      canvas.remove();
+    }
   }
-  
+
   if (showPostCard) {
   }
 
@@ -158,17 +152,16 @@ canvas.addEventListener("mousemove", (e) => {
 });
 
 function onRelease() {
-  if (!ballerina) { 
-	  return;
+  if (!ballerina) {
+    return;
   }
   canvas.style.cursor = "grab";
   isGrabbing = false;
   startOfGrabX = undefined;
   accumRotation += ballerina.rotation.z - startGrabRotation;
   startGrabRotation = ballerina.rotation.z % (2 * Math.PI); // normalize to range [0, 2 * PI]
-  console.log(accumRotation, accumRotation >= 3 * Math.PI)
   if (accumRotation >= 3 * Math.PI) {
-     endSceneTrigger = true
+    endScene = true;
   }
 }
 
