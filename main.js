@@ -160,7 +160,7 @@ function onRelease() {
   startOfGrabX = undefined;
   accumRotation += ballerina.rotation.z - startGrabRotation;
   startGrabRotation = ballerina.rotation.z % (2 * Math.PI); // normalize to range [0, 2 * PI]
-  if (accumRotation >= 3 * Math.PI) {
+  if (accumRotation > 6 * Math.PI) {
     endScene = true;
   }
 }
