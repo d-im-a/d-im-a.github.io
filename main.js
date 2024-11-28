@@ -109,7 +109,7 @@ function animate(time) {
     if (!endSceneStartTime) {
       endSceneStartTime = time;
     }
-    if (time <= endSceneStartTime + 1600) {
+    if (time <= endSceneStartTime + 2400) {
       camera.rotation.x += 0.005;
       camera.position.y += 0.001;
     } else {
