@@ -14,11 +14,12 @@ section {
 h1 {
   font-family: "Caveat";
   font-size: 6vw;
-  top: 50%;
-  left: 50%;
   letter-spacing: 1.25px;
-  color: #FF471E;
+  background-image: linear-gradient(#ff0b39, #ffb3b3);
+  color: transparent;
+  background-clip: text;
   z-index: 2;
+  padding: 30px;
 }
 
 svg path {
@@ -35,12 +36,25 @@ svg path {
   height: 0;
   overflow: hidden;
 }
+.post-card .flower {
+  opacity: 0;
+}
+
+.post-card * {
+  visibility: visible;
+}
+
 .post-card.show {
-	height: 100vh;
+  height: 100vh;
 }
 .post-card.show * {
-  transition: all 1s ease-out;
+  transition: margin 1s ease-out;
+  transition: opacity 1.5s ease-out;
+  visibility: visible;
 }
 .post-card.show .post-card-content {
-	margin-top: 25vh;
+	margin-top: 30vh;
+}
+.post-card.show .flower {
+ opacity: 100%;
 }

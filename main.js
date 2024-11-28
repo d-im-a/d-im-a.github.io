@@ -109,9 +109,9 @@ function animate(time) {
     if (!endSceneStartTime) {
       endSceneStartTime = time;
     }
-    if (time <= endSceneStartTime + 3000) {
+    if (time <= endSceneStartTime + 1600) {
       camera.rotation.x += 0.005;
-      camera.position.y += 0.0005;
+      camera.position.y += 0.0010;
     } else {
       postCard.classList.toggle("show");
       renderer.setAnimationLoop(null);

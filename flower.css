@@ -1,0 +1,86 @@
+.flowers {
+	position: fixed;
+	top: 0
+}
+.flower-1 {
+	top: 15vh;
+	left: 10vw;
+}
+.flower-2 {
+	top: 80vh;
+	left: 20vw;
+}
+.flower-3 {
+	top: 7vh;
+	left: 46vw;
+}
+.flower-4 {
+	top: 80vh;
+	left: 44.7vw;
+}
+.flower-5 {
+	top: 80vh;
+	left: 78vw;
+}
+.flower-6 {
+	top: 13vh;
+	left: 87vw;
+}
+// https://codepen.io/jlong/pen/AzPrOY 
+@-webkit-keyframes flower {
+  0% {
+    transform: rotate(0deg);
+    box-shadow: white 0 0 15px 0, #ff3ea1 -12px -12px 0 4px, #ff3ea1 12px -12px 0 4px, #ff3ea1 12px 12px 0 4px, #ff3ea1 -12px 12px 0 4px;
+  }
+  50% {
+    transform: rotate(1080deg);
+    box-shadow: white 0 0 15px 0, #ff3ea1 12px 12px 0 4px, #ff3ea1 -12px 12px 0 4px, #ff3ea1 -12px -12px 0 4px, #ff3ea1 12px -12px 0 4px;
+  }
+}
+@-moz-keyframes flower {
+  0% {
+    transform: rotate(0deg);
+    box-shadow: white 0 0 15px 0, #ff3ea1 -12px -12px 0 4px, #ff3ea1 12px -12px 0 4px, #ff3ea1 12px 12px 0 4px, #ff3ea1 -12px 12px 0 4px;
+  }
+  50% {
+    transform: rotate(1080deg);
+    box-shadow: white 0 0 15px 0, #ff3ea1 12px 12px 0 4px, #ff3ea1 -12px 12px 0 4px, #ff3ea1 -12px -12px 0 4px, #ff3ea1 12px -12px 0 4px;
+  }
+}
+@-o-keyframes flower {
+  0% {
+    transform: rotate(0deg);
+    box-shadow: white 0 0 15px 0, #ff3ea1 -12px -12px 0 4px, #ff3ea1 12px -12px 0 4px, #ff3ea1 12px 12px 0 4px, #ff3ea1 -12px 12px 0 4px;
+  }
+  50% {
+    transform: rotate(1080deg);
+    box-shadow: white 0 0 15px 0, #ff3ea1 12px 12px 0 4px, #ff3ea1 -12px 12px 0 4px, #ff3ea1 -12px -12px 0 4px, #ff3ea1 12px -12px 0 4px;
+  }
+}
+@keyframes flower {
+  0% {
+    transform: rotate(0deg);
+    box-shadow: white 0 0 15px 0, #ff3ea1 -12px -12px 0 4px, #ff3ea1 12px -12px 0 4px, #ff3ea1 12px 12px 0 4px, #ff3ea1 -12px 12px 0 4px;
+  }
+  50% {
+    transform: rotate(1080deg);
+    box-shadow: white 0 0 15px 0, #ff3ea1 12px 12px 0 4px, #ff3ea1 -12px 12px 0 4px, #ff3ea1 -12px -12px 0 4px, #ff3ea1 12px -12px 0 4px;
+  }
+}
+
+/* :not(:required) hides this rule from IE9 and below */
+.flower {
+  overflow: hidden;
+  position: relative;
+  text-indent: -9999px;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: #fff;
+  border-radius: 100%;
+  box-shadow: white 0 0 15px 0, #f040ff -12px -12px 0 4px, #f040ff 12px -12px 0 4px, #f040ff 12px 12px 0 4px, #f040ff -12px 12px 0 4px;
+  animation: flower 5s infinite ease-in-out;
+  animation-direction: alternate;
+  transform-origin: 50% 50%;
+}
+
