@@ -18,7 +18,7 @@ renderer.setAnimationLoop(animate);
 const floorMaterial = new THREE.MeshBasicMaterial();
 const textureLoader = new THREE.TextureLoader();
 let floor;
-textureLoader.load("./assets/texture.jpg", function (texture) {
+textureLoader.load("./assets/wooden_floor.jpg", function (texture) {
   const floorLength = 300;
   texture.wrapS = THREE.RepeatWrapping;
   texture.wrapT = THREE.RepeatWrapping;
@@ -111,7 +111,7 @@ function animate(time) {
     }
     if (time <= endSceneStartTime + 1600) {
       camera.rotation.x += 0.005;
-      camera.position.y += 0.0010;
+      camera.position.y += 0.001;
     } else {
       postCard.classList.toggle("show");
       renderer.setAnimationLoop(null);
